@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Shuffle and Sort</title>
+        <link rel="stylesheet" type="text/css" href="style1.css" />
+    </head>    
+    <body><h1 class="titles">Shuffle and Sort</h1>
+   <section class="container" style= "width:100%">
+     <main class="item1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </main>
+<section class="item2">
+<button id="shuffle" type="button">Shuffle</button>
+<button id="sort" type="button">Sort</button>
+</section>
+</section>
+<h4 class="titles">Shuffle and Sort by Vidya Manoharan</h1>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $container = $(".item1");
+    $divList = $("div");
+
+    //handler for shuffle click
+    $("#shuffle").on("click", function() {    
+    $divCopy = $divList.clone(true);
+    $("div").remove();
+    while ($divCopy.length > 0) {
+        //chose random index of div array
+        var randomIndex = Math.floor(Math.random() * $divList.length);
+        $container.append($divCopy.splice(randomIndex, 1));
+    }
+    });
+
+    //handler for sort click
+    $("#sort").on("click", function() {    
+        $divCopy = $divList.clone(true);
+        $("div").remove();
+        $divCopy.sort((a, b) => (a.innerText > b.innerText) ? 1 : -1)
+        $container.append($divCopy);    
+});
+    </script>
+</html>
